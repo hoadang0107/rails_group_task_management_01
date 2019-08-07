@@ -1119,7 +1119,6 @@ section
 .sidebar
 {
 	width: 100%;
-	padding-left: 40px;
 }
 .sidebar_section:not(:last-child)
 {

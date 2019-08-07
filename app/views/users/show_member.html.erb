@@ -30,7 +30,6 @@
       <div id="report-errors"></div>
       <%= render "shared/report_form" %>
       <% if @user.reports.any? %>
-        <h3><%= t "report.friend" %> </h3>
         <ol class="reports">
           <%= render @reports %>
         </ol>

@@ -41,6 +41,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @task = Task.new
     redirect_to root_url unless @user && @user.activated
     show_member if @user.member?
     check_leader if @user.leader?

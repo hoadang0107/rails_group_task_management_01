@@ -12,27 +12,16 @@
               <ul>
                 <% if current_user.leader? %>
                   <li>
-                    <%= link_to t("groups.create_task"), "#", "data-toggle": "modal",
+                    <%= link_to 'Create job', "#", "data-toggle": "modal",
                                 "data-target": "#squarespaceModal" %>
                   </li>
                 <% end %>
                 <li><%= link_to t("groups.task_list"), "#" %></li>
-                <li><%= link_to t("groups.member_list"), "#" %></li>
-                <li><%= link_to t("groups.member_report"), "#" %></li>
-                <li><%= link_to t("groups.statistic"), "#" %></li>
               </ul>
             </div>
           </div>
           <!-- Latest Course -->
           <div class="sidebar_section">
-            <div class="courses_search_container">
-              <%= form_for :search, url: search_path, html: {class: "courses_search_form d-flex flex-row align-items-center justify-content-start"} do |f| %>
-                <%= f.text_field :name, class: "courses_search_input", placeholder: t("groups.search_member"), required: "required" %>
-                <%= f.hidden_field :group, value: @group.id %>
-                <%= f.submit t("groups.search"), class: "courses_search_button ml-auton" %>
-              <% end %>
-            </div>
-            <div class="sidebar_section_title"><%= t "groups.members" %></div>
             <div class="sidebar_latest">
               <% @users.each do |user| %>
                 <!-- Latest Course -->
@@ -97,10 +86,8 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">
-          <span aria-hidden="true">×</span><span class="sr-only"></span></button>
         <h3 class="modal-title" id="lineModalLabel">
-          <%= t "groups.create_task" %>
+          Create job
       </div>
       <div class="modal-body">
         <%= form_for @task do |f| %>

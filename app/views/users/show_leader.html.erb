@@ -6,11 +6,28 @@
         <div class="center_img"><%= gravatar_for @user %></div>
         <div class="team_title"><a><%= @user.name %></a></div>
         <div class="team_subtitle"><a><%= @user.email %></div>
-        <div class="social_list">
-          <ul>
-            <%= link_to t("users.show.create_group"), "#", "data-toggle" => "modal", 'data-target' => '#squarespaceModal' %>
-          </ul>
-        </div>
+        <div class=""><%= link_to 'Edit profile', edit_user_path %></div>
+          <div class="container">
+            <div class="row">
+              <div class="sidebar">
+                <!-- Categories -->
+                <div class="">
+                  <div class="">
+                    <ul>
+                      <% if current_user.leader? %>
+                        <li>
+                          <%= link_to 'Create job', "#", "data-toggle": "modal",
+                                      "data-target": "#squarespaceModal" %>
+                        </li>
+                      <% end %>
+                      <li><%= link_to t("groups.task_list"), "#" %></li>
+                    </ul>
+                  </div>
+                </div>
+                <!-- Latest Course -->
+              </div>
+            </div>
+          </div>
       </div>
     </div>
   </div>
@@ -22,40 +39,39 @@
             <center><h5><%= t "users.show.group_management" %></h5></center>
             <hr>
             <div class="row">
-              <% @user.lead_groups.each do |group| %>
+              <% @user.tasks.each do |job| %>
               <div class="col-xs-12 col-sm-6 col-md-4">
                 <div class="image-flip">
                   <div class="mainflip">
                     <div class="frontside">
                       <div class="card">
                         <div class="card-body text-center">
-                          <p>
-                           <%= image_tag group.picture.url, class: "img-fluid" %>
-                          </p>
-                          <h4 class="card-title"><%= group.name %></h4>
-                          <p class="card-text"><%= group.function %></p>
+                          <h4 class="card-title"><%= job.title %></h4>
+                          <h4 class="card-title"><%= job.title %></h4>
+                          <%# <p class="card-text"><%= job.function %></p> %>
                         </div>
                       </div>
                     </div>
                     <div class="backside">
                       <div class="card back-card">
                         <div class="card-body text-center mt-4">
-                          <h4 class="card-title"><%= group.name %></h4>
-                          <p class="card-text"><%= group.description %></p>
+                          <h class="card-title"><%= job.title %></h>
+                          <p class="card-title"><%= job.start_date %> - <%= job.end_date %></p>
+                          <p class="card-text"><%= job.content %></p>
                           <ul class="list-inline">
                             <li class="list-inline-item">
-                              <%= link_to group, method: :delete,
+                              <%= link_to job, method: :delete,
                               data: {confirm: t("users.delete.confirm")} do %>
                               <i class="fa fa-times" ></i>
                               <% end %>
                             </li>
                             <li class="list-inline-item">
-                              <%= link_to group do %>
+                              <%= link_to job do %>
                                 <i class="fa fa-hand-o-up"></i>
                               <% end %>
                             </li>
                           </ul>
-                        </div>
+                        </h>
                       </div>
                     </div>
                   </div>
@@ -74,37 +90,40 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
         <h3 class="modal-title" id="lineModalLabel">
-          <%= t "users.show.create_group" %>
-        </h3>
+          New job
       </div>
       <div class="modal-body">
-        <%= form_for (@group) do |f| %>
-        <div class="form-group">
-          <label for="exampleInputEmail1"><%= t "group.name" %></label>
-          <%= f.text_field :name, class: "form-control", placeholder: t("group.name") %>
-        </div>
-
-        <div class="form-group">
-          <label for="exampleInputPassword1"><%= t "group.function" %></label>
-          <%= f.text_field :function, class: "form-control", placeholder: t("group.description") %>
-        </div>
-        <div class="form-group">
-          <label for="exampleInputPassword1"><%= t "group.description" %></label>
-          <%= f.text_field :description, class: "form-control", placeholder: t("group.description") %>
-        </div>
-        <div class="form-group">
-          <label for="exampleInputFile">
-          <%= t "group.select_imgage" %>
-          </label>
-          <%= f.file_field :picture %>
-        </div>
-        <%= f.submit t("users.show.create_group"), class: "btn btn-lg btn-primary btn-block btn-signin" %>
+        <%= form_for @task do |f| %>
+          <%= f.hidden_field :group_id, value: @group.id %>
+          <div class="form-group">
+            <%= f.text_field :title, class: "form-control", placeholder: t("task.title") %>
+          </div>
+          <div class="form-group">
+            <%= f.text_field :content, class: "form-control", placeholder: 'Skill' %>
+          </div>
+          <div class="form-group">
+            <%= f.text_field :content, class: "form-control", placeholder: 'Salary' %>
+          </div>
+          <div class="form-group">
+            <%= f.text_area :content, class: "form-control", placeholder: t("groups.description") %>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1"><%= t "task.deadline" %></label>
+            <%= f.date_field :start_date %> - <%= f.date_field :end_date %>
+          </div>
+          <hr>
+          <div id="child_fields">
+            <%= f.fields_for :subtasks do |builder| %>
+              <li>
+                <%= render "subtask", ff: builder %>
+              </li>
+            <% end %>
+            <%= f.submit 'Create', class: "btn btn-lg btn-primary btn-block btn-signin" %>
         <% end %>
-
-      </div>
-      <div class="modal-footer">
+        </div>
+        <div class="modal-footer">
+        </div>
       </div>
     </div>
   </div>

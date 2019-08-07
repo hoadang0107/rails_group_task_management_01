@@ -7,7 +7,7 @@ User.create!(name:  "Duclh",
              role: 0)
 20.times do |n|
   name  = Faker::Name.name
-  email = "leader-#{n+1}@gmail.com"
+  email = "company-#{n+1}@gmail.com"
   password = "12345678"
   User.create!(name:  name,
                email: email,
@@ -18,7 +18,7 @@ User.create!(name:  "Duclh",
 end
 10.times do |n|
   name  = Faker::Name.name
-  email = "no_leader-#{n+1}@gmail.com"
+  email = "no_company-#{n+1}@gmail.com"
   password = "12345678"
   User.create!(name:  name,
                email: email,
@@ -29,7 +29,7 @@ end
 end
 100.times do |n|
   name  = Faker::Name.name
-  email = "member-#{n+1}@gmail.com"
+  email = "student-#{n+1}@gmail.com"
   password = "12345678"
   User.create!(name:  name,
                email: email,

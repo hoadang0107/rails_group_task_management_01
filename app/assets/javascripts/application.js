@@ -1,8 +1,9 @@
 //= require rails-ujs
 //= require jquery
-//= require bootstrap
 //= require jquery-3.2.1.min
 //= require popper
+//= require turbolinks
+//= require bootstrap
 //= require bootstrap.min
 //= require TweenMax.min
 //= require TimelineMax.min

@@ -30,7 +30,7 @@ group :development, :test do
   gem "capybara", "~> 2.13"
   gem "rubocop", "~> 0.54.0", require: false
   gem "selenium-webdriver"
-  gem "mysql2"
+  gem 'sqlite3', '1.3.13'
 end
 
 group :development do
