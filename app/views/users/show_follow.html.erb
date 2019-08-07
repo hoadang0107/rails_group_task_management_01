@@ -1,0 +1,35 @@
+<% provide :title, @title %>
+<div class="row">
+  <div class="col-lg-3 col-md-6 team_col">
+    <div class="team_item">
+      <div class="team_body">
+        <div class="center_img"><%= gravatar_for @user %></div>
+        <div class="team_title"><a><%= @user.name %></a></div>
+        <div class="team_subtitle"><a><%= @user.email %></div>
+        <div class="social_list">
+          <% @user ||= current_user %>
+          <ul>
+            <li><%= link_to t("user.show.following"), following_user_path(@user) %>
+              <br class="stat">
+              <strong><%= @user.following.count %></strong>
+            </li>
+            <li><%= link_to t("user.show.follower"), followers_user_path(@user) %>
+              <br class="stat">
+              <strong> <%= @user.followers.count %></strong>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="col-md-8">
+    <h3><%= @title %></h3>
+    <% if @users.any? %>
+      <ul class="users follow">
+        <%= render @users %>
+      </ul>
+      <%= will_paginate @users, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer %>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+<li id="report-<%= report.id %>">
+  <div class="well">
+    <div class="media">
+      <a class="pull-left">
+        <%= link_to gravatar_for(report.user, size: Settings.length_name), report.user %>
+      </a>
+      <div class="media-body col-md-10 border-outline">
+        <b><%= t "report.task" %>: <%= report.task_content %></b>
+        <div class="subtask-style"><%= t "report.subtask" %>: <%= report.subtask_content %></div>
+        <p class="context_report"><%= report.content %></p>
+        <div class="report-footer">
+          <div class="report-by">
+            <%= t "report.post" %> <%= time_ago_in_words(report.created_at) %> <%= t "report.ago" %>
+            <%= t "report.by" %> <%= link_to report.user.name, report.user %>
+          </div>
+          <div class="delete-report">
+            <% if current_user?(report.user) %>
+              <%= link_to t("report.delete"), report, method: :delete,
+                          data: {confirm: t("report.sure")} %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</li>
