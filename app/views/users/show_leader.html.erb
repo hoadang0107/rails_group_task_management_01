@@ -6,6 +6,8 @@
         <div class="center_img"><%= gravatar_for @user %></div>
         <div class="team_title"><a><%= @user.name %></a></div>
         <div class="team_subtitle"><a><%= @user.email %></div>
+        <div class="team_subtitle"><a><%= @user.phonenumber %></div>
+        <div class="team_subtitle"><a><%= @user.address %></div>
         <div class=""><%= link_to 'Edit profile', edit_user_path %></div>
           <div class="container">
             <div class="row">
@@ -95,7 +97,6 @@
       </div>
       <div class="modal-body">
         <%= form_for @task do |f| %>
-          <%= f.hidden_field :group_id, value: @group.id %>
           <div class="form-group">
             <%= f.text_field :title, class: "form-control", placeholder: t("task.title") %>
           </div>

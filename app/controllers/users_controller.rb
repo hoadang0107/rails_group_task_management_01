@@ -60,7 +60,7 @@ class UsersController < ApplicationController
     if (current_user != @user) && !current_user.admin?
       redirect_to current_user
     else
-      @group = Group.new
+      # @group = Group.new
       render "show_leader"
     end
   end
@@ -68,7 +68,7 @@ class UsersController < ApplicationController
   def edit; end
 
   def update
-    if @user.update_attributes user_params
+    if @user.update_attributes user_updated_params
       flash[:success] = t "flash.user_updated"
       redirect_to @user
     else
@@ -105,7 +105,12 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit :name, :email, :password,
-      :password_confirmation, :role
+      :password_confirmation, :role, :activated
+  end
+
+  def user_updated_params
+    params.require(:user).permit :name, :email, :password,
+      :password_confirmation, :phonenumber, :address
   end
 
   def correct_user
