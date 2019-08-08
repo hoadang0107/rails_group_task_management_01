@@ -49,8 +49,11 @@
                       <div class="card">
                         <div class="card-body text-center">
                           <h4 class="card-title"><%= job.title %></h4>
-                          <h4 class="card-title"><%= job.title %></h4>
-                          <%# <p class="card-text"><%= job.function %></p> %>
+                          <%= job.content %>
+                          <p>
+                            <strong>Salary:</strong>
+                            <%= job.salary %>
+                          </p>
                         </div>
                       </div>
                     </div>
@@ -59,6 +62,14 @@
                         <div class="card-body text-center mt-4">
                           <h class="card-title"><%= job.title %></h>
                           <p class="card-title"><%= job.start_date %> - <%= job.end_date %></p>
+                          <p>
+                            <strong>Salary:</strong>
+                            <%= job.salary %>
+                          </p>
+                          <p>
+                            <strong>Skill:</strong>
+                            <%= job.skill %>
+                          </p>
                           <p class="card-text"><%= job.content %></p>
                           <ul class="list-inline">
                             <li class="list-inline-item">

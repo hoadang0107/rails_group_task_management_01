@@ -16,6 +16,27 @@ User.create!(name:  "Duclh",
                activated: true,
                role: 1)
 end
+Task.create!(title: "Thiet ke giao dien",
+             member_id: 2,
+             content: "Thiet ke giao dien trang web mua sam don gian",
+             salary: "200$",
+             skill: "html, css, javascript",
+             start_date: DateTime.new(2019,9,1),
+             end_date: DateTime.new(2019,9,4))
+Task.create!(title: "Thiet ke database",
+             member_id: 2,
+             content: "Thiet ke databse web mua sam",
+             salary: "200$",
+             skill: "sql, sqlite",
+             start_date: DateTime.new(2019,9,4),
+             end_date: DateTime.new(2019,10,10))
+Task.create!(title: "Ban Hang",
+             member_id: 2,
+             content: "ban hang trong dip noel",
+             salary: "50$",
+             skill: "ua nhin, an noi tot, hoat bat",
+             start_date: DateTime.new(2019,11,4),
+             end_date: DateTime.new(2019,12,4))
 10.times do |n|
   name  = Faker::Name.name
   email = "no_company-#{n+1}@gmail.com"
