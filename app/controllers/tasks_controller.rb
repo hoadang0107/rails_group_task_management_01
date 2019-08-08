@@ -1,25 +1,12 @@
 class TasksController < ApplicationController
   before_action :find_task,
     only: [:edit, :update, :show, :destroy]
-  # before_action only: [:create] do
-  #   check_leader_group params[:task][:group_id]
-  #   find_group params[:task][:group_id]
-  #   check_members_exist
-  # end
-  # before_action only: [:show, :statistic] do
-  #   check_leader_or_member params[:group_id]
-  #   find_group params[:group_id]
-  # end
   
   def index 
     @tasks = Task.search(params[:title])
-    # byebug
-    # if @tasks.length
   end
   
   def show
-    # @users = @group.members.paginate page: params[:page],
-    #                                  per_page: Settings.users.per_page
   end
 
   def create
