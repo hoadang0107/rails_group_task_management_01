@@ -24,27 +24,15 @@ class TasksController < ApplicationController
     @task = Task.new params.require(:task).permit :title,
     :content, :start_date, :end_date, :skill, :salary, :member_id
     if @task.save
-      flash[:info] = t "flash.create_user_successful"
-      redirect_to root_path
+      flash[:info] = t "flash.create_job_successful"
     else
-      flash.now[:danger] = t "flash.create_user_eror"
+      flash.now[:danger] = t "flash.create_job_eror"
     end
-    # group_taskid = generate_group_task_id
-    # @group.members.each do |member|
-    #   @task = Task.new task_params.merge(member_id: member.id,
-    #                                      group_task_id: group_taskid)
-    #   @task.subtasks.each do |subtask|
-    #     subtask.done = 0
-    #   end
-    #   @task.remain_time = @task.end_date - 12.hours
-    #   task_save
-    # end
-    # redirect_to group_path(@group.id)
+    redirect_back(fallback_location: current_user)
   end
 
   def destroy
-    @tasks = Task.where group_task_id: @task.group_task_id
-    @tasks.each(&:destroy)
+    Task.delete(params.require(:id))
     flash[:info] = t "flash.deleted"
     redirect_to request.referrer || root_url
   end

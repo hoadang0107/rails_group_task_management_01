@@ -7,6 +7,7 @@ en:
     add_user_successful: "Add user successful!"
     add_task_successful: "Add job successful!"
     create_user_eror: "Create user erorr!"
+    create_job_eror: "Create job erorr!"
     add_user_eror: "Add user erorr!"
     add_task_error: "Add job failure!"
     create_group_eror: "Create group erorr!"
