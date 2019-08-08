@@ -10,7 +10,11 @@ class TasksController < ApplicationController
     check_leader_or_member params[:group_id]
     find_group params[:group_id]
   end
-
+  
+  def index 
+    @tasks = Task.search(params[:term]) 
+  end
+  
   def show
     @users = @group.members.paginate page: params[:page],
                                      per_page: Settings.users.per_page
@@ -102,6 +106,10 @@ class TasksController < ApplicationController
     return if @task
     redirect_to group_path
     flash[:danger] = t "flash.cant_find_task"
+  end
+  
+  def task_params
+    params.require(:task).permit(:term)
   end
 
   def check_task_in_group
