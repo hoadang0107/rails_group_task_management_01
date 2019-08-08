@@ -8,10 +8,22 @@
           <!-- Categories -->
           <div class="sidebar_section">
             <div class="sidebar_section_title"><%= t "group.main_function" %></div>
+            <br>
             <div class="sidebar_categories">
-              <ul>
-                <li><%= link_to t("group.task_list"), "#" %></li>
-              </ul>
+            <ul>
+              <% if current_user.leader? %>
+                <li><%= link_to t("group.task_list"), user_path %></li>
+              <% end %>
+              <% if current_user.member? %>
+                <li><%= link_to t("group.task_list"), tasks_path %></li>
+              <% end %>
+            </ul>
+            <% if current_user.leader? %>
+              <%= link_to 'Edit', "#", class:' btn btn-primary' %>
+            <% end %>
+            <% if current_user.member? %>
+              <%= link_to 'Register', "#", class:' btn btn-primary' %>
+            <% end %>
             </div>
           </div>
           <!-- Latest Course -->
@@ -20,11 +32,16 @@
 
       <!-- Courses Main Content -->
       <div class="col-lg-8">
-        <center>
-          <div class="sidebar_section_title"><%= "Task name : #{@task.title}" %></div>
+          <div class="sidebar_section_title"><%= "Name : #{@task.title}" %></div>
           <br>
-        </center>
-
+          <div class="sidebar_section_title"><%= "Salary : #{@task.salary}" %></div>
+          <br>
+          <div class="sidebar_section_title"><%= "Skill : #{@task.skill}" %></div>
+          <br>
+          <div class="sidebar_section_title"><%= "Time : #{@task.start_date} - #{@task.end_date}" %></div>
+          <br>
+          <div class="sidebar_section_title"><%= "Content : #{@task.content}" %></div>
+          <br>
       </div>
     </div>
   </div>
