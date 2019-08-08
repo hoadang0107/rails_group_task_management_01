@@ -12,12 +12,12 @@ class TasksController < ApplicationController
   # end
   
   def index 
-    @tasks = Task.search(params[:term]) 
+    @tasks = Task.search(params[:title])
   end
   
   def show
-    @users = @group.members.paginate page: params[:page],
-                                     per_page: Settings.users.per_page
+    # @users = @group.members.paginate page: params[:page],
+    #                                  per_page: Settings.users.per_page
   end
 
   def create

@@ -1,0 +1,64 @@
+<% provide :title, 'Result' %>
+
+<div class="super_container">
+  <div class="features">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="section_title_container text-center">
+            <h2 class="section_title"><%= t(".welcome") %></h2>
+          </div>
+          <%= form_tag(tasks_path, method: :get) do %>
+            <%= text_field_tag :title, params[:title], class: "box" %>
+            <%= submit_tag 'Search', class: "btn-search" %>
+          <% end %>
+        </div>
+      </div>
+      <% @i = 0%>
+      <% loop do %>
+        <div class = "col-md-4">
+          <div class="card border-left-primary shadow h-100 py-2">
+            <div class="card-body">
+              <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                  <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Earnings (Monthly)</div>
+                  <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                </div>
+              </div>
+          </div>
+        </div>
+      <% @i+=1%>
+      <% break if @i == @tasks.length %>
+        <div class = "col-md-4">
+          <div class="card border-left-primary shadow h-100 py-2">
+            <div class="card-body">
+              <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                  <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Earnings (Monthly)</div>
+                  <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+      <% @i+=1%>
+      <% break if @i == @tasks.length %>
+        <div class = "col-md-4">
+        <div class="card border-left-primary shadow h-100 py-2">
+          <div class="card-body">
+            <div class="row no-gutters align-items-center">
+              <div class="col mr-2">
+                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Earnings (Monthly)</div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+              </div>
+            </div>
+        </div>
+      </div>
+      </div>
+    </div>
+      <% break if @i == @tasks.length %>
+      <% end %>
+     
+    </div>
+  </div>
+</div>

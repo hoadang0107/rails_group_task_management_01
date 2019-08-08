@@ -2,48 +2,6 @@
 <div class="courses">
   <div class="container">
     <div class="row">
-
-      <!-- Courses Main Content -->
-      <div class="col-lg-8">
-        <center>
-          <div class="sidebar_section_title"><%= "Task name : #{@task.title}" %></div>
-          <br>
-        </center>
-        <center>
-          <div class="sidebar_section_title"><%= t ".subtask_list" %></div>
-        </center>
-        <br>
-
-        <!-- Subtask list -->
-        <div class="d-flex flex-column align-items-end">
-          <table class="table table-bordered table-responsive-lg">
-            <thead>
-            <tr>
-              <th scope="col"><%= t ".subtask_name" %></th>
-              <th scope="col"><%= t ".status" %></th>
-              <th scope="col"></th>
-            </tr>
-            </thead>
-            <tbody>
-            <% @task.subtasks.each do |subtask| %>
-              <tr>
-                <td class="td-subtask-content"><%= subtask.content %></td>
-                <td class="td-subtask-status" id="subtask-<%= subtask.id %>">
-                  <%= render "subtask_status", subtask: subtask %>
-                </td>
-                <td class="td-subtask-status">
-                  <%= link_to change_subtask_path(subtask: {subtask_id: subtask.id, group_id: @task.group_id}), method: :post, remote: true do %>
-                    <button class="courses_search_button ml-auto"><%= t ".change" %></button>
-                    <% end %>
-                </td>
-              </tr>
-              <% end %>
-            </tbody>
-          </table>
-        </div>
-        <!-- Subtask list -->
-
-      </div>
       <!-- Courses Sidebar -->
       <div class="col-lg-4">
         <div class="sidebar">
@@ -58,6 +16,15 @@
           </div>
           <!-- Latest Course -->
         </div>
+      </div>
+
+      <!-- Courses Main Content -->
+      <div class="col-lg-8">
+        <center>
+          <div class="sidebar_section_title"><%= "Task name : #{@task.title}" %></div>
+          <br>
+        </center>
+
       </div>
     </div>
   </div>
