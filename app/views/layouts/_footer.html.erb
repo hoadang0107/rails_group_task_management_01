@@ -12,7 +12,7 @@
               <div class="footer_section footer_about">
                 <div class="footer_logo_container">
                   <a href="#">
-                    <div class="footer_logo_text">GT<span>M</span></div>
+                    <div class="footer_logo_text">Find<span>Job</span></div>
                   </a>
                 </div>
               </div>
@@ -21,38 +21,17 @@
 
             <div class="col-lg-3 footer_col">
 
-              <!-- Footer Contact -->
-              <div class="footer_section footer_contact">
-                <div class="footer_title"><%= t "static_pages.base.contact" %></div>
-                <div class="footer_contact_info">
-                  <ul>
-                    <li><%= t "static_pages.base.company_mail" %></li>
-                    <li><%= t "static_pages.base.company_local" %></li>
-                  </ul>
-                </div>
-              </div>
-
             </div>
 
             <div class="col-lg-3 footer_col">
-
-              <!-- Footer links -->
-              <div class="footer_section footer_links">
-                <div class="footer_title"><%= t "static_pages.base.contact" %></div>
-                <div class="footer_links_container">
-                  <ul>
-                    <li><a href="#"><%= t "static_pages.home.title" %></a></li>
-                    <li><a href="#"><%= t "static_pages.about.title" %></a></li>
-                  </ul>
-                </div>
-              </div>
-
             </div>
-
-            <div class="col-lg-3 footer_col clearfix">
-
-            </div>
-
+            <nav class="main_nav_contaner ml-auto">
+              <ul class="main_nav">
+                <li><%= link_to t("static_pages.home.title"), root_path  %></li>
+                <li><%= link_to "About", '#' %></li>
+                <li><%= link_to "", '#' %></li>
+              </ul>
+            </nav>
           </div>
         </div>
       </div>
