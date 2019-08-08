@@ -18,7 +18,6 @@
                               "data-target": "#squarespaceModal" %>
                 </li>
               <% end %>
-              <li><%= link_to t("groups.task_list"), "#" %></li>
             </ul>
           </div>
         </div>
@@ -34,54 +33,54 @@
             <hr>
             <div class="row">
               <% @user.tasks.each do |job| %>
-              <div class="col-xs-12 col-sm-6 col-md-4">
-                <div class="image-flip">
-                  <div class="mainflip">
-                    <div class="frontside">
-                      <div class="card">
-                        <div class="card-body text-center">
-                          <h4 class="card-title"><%= job.title %></h4>
-                          <%= job.content %>
-                          <p>
-                            <strong>Salary:</strong>
-                            <%= job.salary %>
-                          </p>
+                <div class="col-md-4">
+                  <div class="image-flip">
+                    <div class="mainflip">
+                      <div class="frontside">
+                        <div class="card">
+                          <div class="card-body text-center">
+                            <h4 class="card-title"><%= job.title %></h4>
+                            <%= job.content %>
+                            <p>
+                              <strong>Salary:</strong>
+                              <%= job.salary %>
+                            </p>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                    <div class="backside">
-                      <div class="card back-card">
-                        <div class="card-body text-center mt-4">
-                          <h class="card-title"><%= job.title %></h>
-                          <p class="card-title"><%= job.start_date %> - <%= job.end_date %></p>
-                          <p>
-                            <strong>Salary:</strong>
-                            <%= job.salary %>
-                          </p>
-                          <p>
-                            <strong>Skill:</strong>
-                            <%= job.skill %>
-                          </p>
-                          <p class="card-text"><%= job.content %></p>
-                          <ul class="list-inline">
-                            <li class="list-inline-item">
-                              <%= link_to job, method: :delete,
-                              data: {confirm: t("users.delete.confirm")} do %>
-                              <i class="fa fa-times" ></i>
-                              <% end %>
-                            </li>
-                            <li class="list-inline-item">
-                              <%= link_to job do %>
-                                <i class="fa fa-hand-o-up"></i>
-                              <% end %>
-                            </li>
-                          </ul>
-                        </h>
+                      <div class="backside">
+                        <div class="card back-card">
+                          <div class="card-body text-center mt-4">
+                            <h class="card-title"><%= job.title %></h>
+                            <p class="card-title"><%= job.start_date %> - <%= job.end_date %></p>
+                            <p>
+                              <strong>Salary:</strong>
+                              <%= job.salary %>
+                            </p>
+                            <p>
+                              <strong>Skill:</strong>
+                              <%= job.skill %>
+                            </p>
+                            <p class="card-text"><%= job.content %></p>
+                            <ul class="list-inline">
+                              <li class="list-inline-item">
+                                <%= link_to job, method: :delete,
+                                data: {confirm: t("users.delete.confirm")} do %>
+                                <i class="fa fa-times" ></i>
+                                <% end %>
+                              </li>
+                              <li class="list-inline-item">
+                                <%= link_to job do %>
+                                  <i class="fa fa-hand-o-up"></i>
+                                <% end %>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
               <% end %>
             </div>
           </div>
