@@ -8,19 +8,19 @@
         <div class="team_subtitle"><a><%= @user.email %></div>
         <div class="team_subtitle"><a><%= @user.phonenumber %></div>
         <div class="team_subtitle"><a><%= @user.address %></div>
-        <div class=""><%= link_to 'Edit profile', edit_user_path %></div>
-        <div class="">
-          <div class="">
-            <ul>
-              <% if current_user.leader? %>
-                <li>
-                  <%= link_to 'Create job', "#", "data-toggle": "modal",
-                              "data-target": "#squarespaceModal" %>
-                </li>
-              <% end %>
-            </ul>
-          </div>
-        </div>
+        <%# <div class="sidebar_categories"> %>
+          <br>
+          <ul>
+            <li><%= link_to 'Edit profile', edit_user_path, class:' btn btn-primary' %></li>
+            <br>
+            <% if current_user.leader? %>
+              <li>
+                <%= link_to 'Create job', "#", "data-toggle": "modal",
+                            "data-target": "#squarespaceModal", class:' btn btn-primary' %>
+              </li>
+            <% end %>
+          </ul>
+        <%# </div> %>
       </div>
     </div>
   </div>
