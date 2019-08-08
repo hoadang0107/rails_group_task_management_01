@@ -18,4 +18,11 @@ class Task < ApplicationRecord
     return if start_date <= end_date
     errors.add :end_date, I18n.t("tasks.start_cant_later_than_end")
   end
+  def self.search(term)
+    if term
+      where('title LIKE ?', "%#{term}%")
+    else
+      all
+    end
+  end
 end

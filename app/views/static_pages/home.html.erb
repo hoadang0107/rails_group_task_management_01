@@ -14,10 +14,14 @@
           <div class="section_title_container text-center">
             <h2 class="section_title"><%= t(".welcome") %></h2>
           </div>
+          
+          <%= form_tag(tasks_path, method: :get) do %>
+            <%= text_field_tag :term, params[:term], class: "box" %>
+            <%= submit_tag 'Search', class: "btn-search" %>
+          <% end %>
         </div>
       </div>
       <%# <div class="row features_row"> %>
-      </div>
     </div>
   </div>
 </div>
