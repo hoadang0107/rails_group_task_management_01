@@ -109,14 +109,6 @@
           </div>
           <hr>
           <div id="child_fields">
-            <li id="add-date">
-              <%= link_to t("task.add_subtask"), "#", id: "addbut", format: :js %>
-            </li>
-            <%= f.fields_for :subtasks do |builder| %>
-              <li>
-                <%= render "subtask", ff: builder %>
-              </li>
-            <% end %>
             <%= f.submit t("task.submit"), class: "btn btn-lg btn-primary btn-block btn-signin" %>
         <% end %>
         </div>
