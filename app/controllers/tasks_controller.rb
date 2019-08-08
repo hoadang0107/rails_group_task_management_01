@@ -25,21 +25,10 @@ class TasksController < ApplicationController
     :content, :start_date, :end_date, :skill, :salary, :member_id
     if @task.save
       flash[:info] = t "flash.create_user_successful"
-      redirect_to root_path
+      redirect_back(fallback_location: current_user)
     else
       flash.now[:danger] = t "flash.create_user_eror"
     end
-    # group_taskid = generate_group_task_id
-    # @group.members.each do |member|
-    #   @task = Task.new task_params.merge(member_id: member.id,
-    #                                      group_task_id: group_taskid)
-    #   @task.subtasks.each do |subtask|
-    #     subtask.done = 0
-    #   end
-    #   @task.remain_time = @task.end_date - 12.hours
-    #   task_save
-    # end
-    # redirect_to group_path(@group.id)
   end
 
   def destroy
