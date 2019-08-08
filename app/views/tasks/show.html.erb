@@ -32,13 +32,15 @@
 
       <!-- Courses Main Content -->
       <div class="col-lg-8">
-          <div class="sidebar_section_title"><%= "Name : #{@task.title}" %></div>
+          <h3><%= @task.title %></h3>
+          
+          <div class="sidebar_section_title"><%= "Company : #{@user.name}" %></div>
           <br>
           <div class="sidebar_section_title"><%= "Salary : #{@task.salary}" %></div>
           <br>
-          <div class="sidebar_section_title"><%= "Skill : #{@task.skill}" %></div>
-          <br>
           <div class="sidebar_section_title"><%= "Time : #{@task.start_date} - #{@task.end_date}" %></div>
+          <br>
+          <div class="sidebar_section_title"><%= "Skill : #{@task.skill}" %></div>
           <br>
           <div class="sidebar_section_title"><%= "Content : #{@task.content}" %></div>
           <br>

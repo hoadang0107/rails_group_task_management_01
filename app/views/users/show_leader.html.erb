@@ -1,6 +1,6 @@
 <%= provide :title, @user.name %>
 <div class="row">
-  <div class="col-lg-3 col-md-3 team_col">
+  <div class="col-lg-3 col-md-6 team_col">
     <div class="team_item">
       <div class="team_body">
         <div class="center_img"><%= gravatar_for @user %></div>
@@ -24,7 +24,7 @@
       </div>
     </div>
   </div>
-  <div class="col-lg-9 col-md-9 team_col">
+  <div class="col-lg-9 col-md-6 team_col">
     <div class="team_item">
       <div>
         <section id="team" class="pb-5">
@@ -33,25 +33,26 @@
             <hr>
             <div class="row">
               <% @user.tasks.each do |job| %>
-              <div class="col-lg-6 col-md-6">
-                <div class="image-flip">
-                  <div class="mainflip">
-                    <div class="frontside">
-                      <div class="card">
-                        <div class="card-body text-center">
-                          <h4 class="card-title"><%= job.title %></h4>
-                          <%= job.content %>
-                          <p>
-                            <strong>Salary:</strong>
-                            <%= job.salary %>
-                          </p>
+                <div class="col-md-4">
+                  <div class="image-flip">
+                    <div class="mainflip">
+                      <div class="frontside">
+                        <div class="card">
+                          <div class="card-body text-center">
+                            <h4 class="card-title"><%= job.title %></h4>
+                              <%= job.content %>
+                            <p>
+                              <strong>Salary:</strong>
+                              <%= job.salary %>
+                            </p>
+                          </div>
                         </div>
                       </div>
                       <div class="backside">
                         <div class="card back-card">
-                          <div class="card-body text-center mt-4">
-                            <h class="card-title"><%= job.title %></h>
-                            <p class="card-title"><%= job.start_date %> - <%= job.end_date %></p>
+                          <div class="card-body text-center">
+                            <h4 class="card-title"><%= job.title %></h4>
+                            <p><%= job.start_date %> - <%= job.end_date %></p>
                             <p>
                               <strong>Salary:</strong>
                               <%= job.salary %>
@@ -60,7 +61,7 @@
                               <strong>Skill:</strong>
                               <%= job.skill %>
                             </p>
-                            <p class="card-text"><%= job.content %></p>
+                            
                             <ul class="list-inline">
                               <li class="list-inline-item">
                                 <%= link_to job, method: :delete,
