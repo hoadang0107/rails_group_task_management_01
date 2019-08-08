@@ -114,7 +114,6 @@
       </div>
       <div class="modal-body">
         <%= form_for @task do |f| %>
-          <%= f.hidden_field :group_id, value: @group.id %>
           <div class="form-group">
             <label for="exampleInputEmail1"><%= t "tasks.title" %></label>
             <%= f.text_field :title, class: "form-control", placeholder: t("groups.name") %>
@@ -133,14 +132,6 @@
           </div>
           <hr>
           <div id="child_fields">
-          <li id="add-date">
-            <%= link_to t("tasks.add_subtask"), "#", id: "addbut", format: :js %>
-          </li>
-          <%= f.fields_for :subtasks do |builder| %>
-            <li>
-              <%= render "groups/subtask", ff: builder %>
-            </li>
-          <% end %>
           <%= f.submit t("tasks.submit"), class: "btn btn-lg btn-primary btn-block btn-signin" %>
         <% end %>
       </div>

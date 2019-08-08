@@ -9,9 +9,10 @@
       <%= f.password_field :password, class: "form-control", placeholder: t(".password") %>
       <%= f.password_field :password_confirmation, class: "form-control", placeholder: t(".password_confirmation") %>
       <div class="form-group">
-        <%= f.select(:role, [t(".member"), t(".leader")], {include_blank: t(".choose_your_role")},
+        <%= f.select(:role, {:student=>'member', :company=>'leader'}, {include_blank: t(".choose_your_role")},
                      {:class => "form-control"}) %>
       </div>
+      <%= f.hidden_field :activated, value: true %>
       <%= f.submit t(".create_my_account"), class: "btn btn-lg btn-primary btn-block btn-signin" %>
     <% end %>
   </div>

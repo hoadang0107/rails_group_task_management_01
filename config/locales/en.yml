@@ -3,6 +3,7 @@ en:
     cant_find_user: "Can't find user"
     cant_find_group: "Can't find group"
     create_user_successful: "Create user successful!"
+    create_job_successful: "Create new job successful!"
     add_user_successful: "Add user successful!"
     add_task_successful: "Add job successful!"
     create_user_eror: "Create user erorr!"
@@ -105,8 +106,8 @@ en:
       password: "Password"
       password_confirmation: "Password Confirmation"
       choose_your_role: "Choose your role"
-      member: "member"
-      leader: "leader"
+      member: "student"
+      leader: "company"
       create_my_account: "Create My Account"
     show:
       following: "Following"

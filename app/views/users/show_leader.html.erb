@@ -6,6 +6,8 @@
         <div class="center_img"><%= gravatar_for @user %></div>
         <div class="team_title"><a><%= @user.name %></a></div>
         <div class="team_subtitle"><a><%= @user.email %></div>
+        <div class="team_subtitle"><a><%= @user.phonenumber %></div>
+        <div class="team_subtitle"><a><%= @user.address %></div>
         <div class=""><%= link_to 'Edit profile', edit_user_path %></div>
           <div class="container">
             <div class="row">
@@ -95,30 +97,25 @@
       </div>
       <div class="modal-body">
         <%= form_for @task do |f| %>
-          <%= f.hidden_field :group_id, value: @group.id %>
           <div class="form-group">
             <%= f.text_field :title, class: "form-control", placeholder: t("task.title") %>
           </div>
           <div class="form-group">
-            <%= f.text_field :content, class: "form-control", placeholder: 'Skill' %>
+            <%= f.text_field :skill, class: "form-control", placeholder: 'Skill' %>
           </div>
           <div class="form-group">
-            <%= f.text_field :content, class: "form-control", placeholder: 'Salary' %>
+            <%= f.text_field :salary, class: "form-control", placeholder: 'Salary' %>
           </div>
           <div class="form-group">
             <%= f.text_area :content, class: "form-control", placeholder: t("groups.description") %>
           </div>
+          <%= f.hidden_field :member_id, value: current_user.id %>
           <div class="form-group">
             <label for="exampleInputPassword1"><%= t "task.deadline" %></label>
             <%= f.date_field :start_date %> - <%= f.date_field :end_date %>
           </div>
           <hr>
           <div id="child_fields">
-            <%= f.fields_for :subtasks do |builder| %>
-              <li>
-                <%= render "subtask", ff: builder %>
-              </li>
-            <% end %>
             <%= f.submit 'Create', class: "btn btn-lg btn-primary btn-block btn-signin" %>
         <% end %>
         </div>

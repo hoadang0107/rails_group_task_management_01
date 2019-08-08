@@ -1,15 +1,15 @@
 class TasksController < ApplicationController
-  before_action :find_task, :check_task_in_group,
+  before_action :find_task,
     only: [:edit, :update, :show, :destroy]
-  before_action only: [:create] do
-    check_leader_group params[:task][:group_id]
-    find_group params[:task][:group_id]
-    check_members_exist
-  end
-  before_action only: [:show, :statistic] do
-    check_leader_or_member params[:group_id]
-    find_group params[:group_id]
-  end
+  # before_action only: [:create] do
+  #   check_leader_group params[:task][:group_id]
+  #   find_group params[:task][:group_id]
+  #   check_members_exist
+  # end
+  # before_action only: [:show, :statistic] do
+  #   check_leader_or_member params[:group_id]
+  #   find_group params[:group_id]
+  # end
   
   def index 
     @tasks = Task.search(params[:term]) 
@@ -21,17 +21,25 @@ class TasksController < ApplicationController
   end
 
   def create
-    group_taskid = generate_group_task_id
-    @group.members.each do |member|
-      @task = Task.new task_params.merge(member_id: member.id,
-                                         group_task_id: group_taskid)
-      @task.subtasks.each do |subtask|
-        subtask.done = 0
-      end
-      @task.remain_time = @task.end_date - 12.hours
-      task_save
+    @task = Task.new params.require(:task).permit :title,
+    :content, :start_date, :end_date, :skill, :salary, :member_id
+    if @task.save
+      flash[:info] = t "flash.create_user_successful"
+      redirect_to root_path
+    else
+      flash.now[:danger] = t "flash.create_user_eror"
     end
-    redirect_to group_path(@group.id)
+    # group_taskid = generate_group_task_id
+    # @group.members.each do |member|
+    #   @task = Task.new task_params.merge(member_id: member.id,
+    #                                      group_task_id: group_taskid)
+    #   @task.subtasks.each do |subtask|
+    #     subtask.done = 0
+    #   end
+    #   @task.remain_time = @task.end_date - 12.hours
+    #   task_save
+    # end
+    # redirect_to group_path(@group.id)
   end
 
   def destroy
@@ -90,9 +98,8 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit :group_id,
-      :title, :content, :start_date, :end_date,
-      subtasks_attributes: [:task_id, :content, :done]
+    params.require(:task).permit :title,
+    :content, :start_date, :end_date, :skill, :salary
   end
 
   def leader_of_group group_id
