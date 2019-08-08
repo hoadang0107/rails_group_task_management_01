@@ -70,7 +70,6 @@ ActiveRecord::Schema.define(version: 20190807183214) do
     t.datetime "remain_time"
     t.string "salary"
     t.string "skill"
-    t.index ["member_id"], name: "index_tasks_on_member_id"
   end
 
   create_table "users", force: :cascade do |t|
