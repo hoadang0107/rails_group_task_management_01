@@ -13,6 +13,8 @@ class TasksController < ApplicationController
   
   def index 
     @tasks = Task.search(params[:title])
+    # byebug
+    # if @tasks.length
   end
   
   def show
