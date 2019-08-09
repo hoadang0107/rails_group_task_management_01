@@ -21,7 +21,7 @@
             <% if logged_in? && current_user.leader? %>
               <%= link_to 'Edit', "#", class:' btn btn-primary' %>
             <% end %>
-            <% if logged_in? && current_user.member? %>
+            <% if logged_in? && current_user.member? && @applyed.empty?%>
               <%= link_to 'Register', applyjob_path(:job => @task), class:' btn btn-primary' %>
             <% end %>
             </div>

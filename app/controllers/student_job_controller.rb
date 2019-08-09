@@ -8,10 +8,8 @@ class StudentJobController < ApplicationController
     @new_job.company_id = @job.member_id
     @new_job.job_id = @job.id
     @new_job.process_status = 1
-    byebug
     @new_job.save
-    # redirect_to work_path(id: @new_job.work_id)
-    redirect_to root_path
+    redirect_to request.referrer
   end
 
   def update
