@@ -60,10 +60,6 @@ end
                role: 2)
 end
 member = User.where(role: 2).limit(10)
-50.times do
-  content = Faker::Lorem.sentence(5)
-  member.each { |member| member.reports.create!(content: content) }
-end
 # Add relationships
 members = User.where(role: 2).all
 member1  = members.first

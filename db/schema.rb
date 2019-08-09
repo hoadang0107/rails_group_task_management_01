@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190807183214) do
+ActiveRecord::Schema.define(version: 20190808182630) do
 
   create_table "group_members", force: :cascade do |t|
     t.integer "member_id"
@@ -27,6 +27,13 @@ ActiveRecord::Schema.define(version: 20190807183214) do
     t.string "description"
     t.string "picture"
     t.string "function"
+  end
+
+  create_table "job_users", force: :cascade do |t|
+    t.integer "student_id"
+    t.integer "company_id"
+    t.integer "job_id"
+    t.integer "process_status", default: 0
   end
 
   create_table "relationships", force: :cascade do |t|
@@ -47,6 +54,15 @@ ActiveRecord::Schema.define(version: 20190807183214) do
     t.string "task_content"
     t.string "subtask_content"
     t.index ["member_id"], name: "index_reports_on_member_id"
+  end
+
+  create_table "student_jobs", force: :cascade do |t|
+    t.integer "student_id"
+    t.integer "company_id"
+    t.integer "job_id"
+    t.integer "process_status", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "subtasks", force: :cascade do |t|

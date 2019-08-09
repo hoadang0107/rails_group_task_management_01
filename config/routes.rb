@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     post "/add_member", to: "groups#add_member"
     delete "/remove_member", to: "groups#remove_member"
     post "/change_subtask", to: "tasks#change_subtask"
+    get "/applyjob", to: "student_job#apply_job"
     resources :users, except: :index do
       member do
         get :following, :followers

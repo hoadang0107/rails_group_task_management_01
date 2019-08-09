@@ -7,11 +7,9 @@ class TasksController < ApplicationController
   end
   
   def show
-    # byebug
-    @job = Task.find_by_id(params[:id])
-    @user = User.find_by_id(@job.member_id)
-    # @users = @group.members.paginate page: params[:page],
-    #                                  per_page: Settings.users.per_page
+    @task = Task.find(params[:id])
+    @applyed = StudentJob.where(job_id: @task.id, student_id: current_user.id)
+    byebug
   end
 
   def create
