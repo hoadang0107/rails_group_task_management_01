@@ -7,9 +7,10 @@ class TasksController < ApplicationController
   end
   
   def show
+    @job = Task.find_by_id(params[:id])
+    @user = User.find_by_id(@job.member_id)
     @task = Task.find(params[:id])
     @applyed = StudentJob.where(job_id: @task.id, student_id: current_user.id)
-    byebug
   end
 
   def create
