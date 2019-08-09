@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   attr_accessor :remember_token
 
+  # has_many :job_users
+  # belongs_to :job_user, optional: true
   has_many :tasks, foreign_key: "member_id"
   has_many :lead_groups, class_name: Group.name, foreign_key: "leader_id"
   has_many :group_members, foreign_key: "member_id"

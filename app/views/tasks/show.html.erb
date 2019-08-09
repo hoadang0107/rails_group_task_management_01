@@ -11,18 +11,18 @@
             <br>
             <div class="sidebar_categories">
             <ul>
-              <% if current_user.leader? %>
+              <% if logged_in? && current_user.leader? %>
                 <li><%= link_to t("group.task_list"), user_path %></li>
               <% end %>
-              <% if current_user.member? %>
+              <% if !logged_in? || current_user.member? %>
                 <li><%= link_to t("group.task_list"), tasks_path %></li>
               <% end %>
             </ul>
-            <% if current_user.leader? %>
+            <% if logged_in? && current_user.leader? %>
               <%= link_to 'Edit', "#", class:' btn btn-primary' %>
             <% end %>
-            <% if current_user.member? %>
-              <%= link_to 'Register', "#", class:' btn btn-primary' %>
+            <% if logged_in? && current_user.member? %>
+              <%= link_to 'Register', applyjob_path(:job => @task), class:' btn btn-primary' %>
             <% end %>
             </div>
           </div>
