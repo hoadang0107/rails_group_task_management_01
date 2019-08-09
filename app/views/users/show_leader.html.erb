@@ -40,7 +40,7 @@
                         <div class="card">
                           <div class="card-body text-center">
                             <h4 class="card-title"><%= job.title %></h4>
-                            <%= job.content %>
+                              <%= job.content %>
                             <p>
                               <strong>Salary:</strong>
                               <%= job.salary %>
@@ -50,9 +50,9 @@
                       </div>
                       <div class="backside">
                         <div class="card back-card">
-                          <div class="card-body text-center mt-4">
-                            <h class="card-title"><%= job.title %></h>
-                            <p class="card-title"><%= job.start_date %> - <%= job.end_date %></p>
+                          <div class="card-body text-center">
+                            <h4 class="card-title"><%= job.title %></h4>
+                            <p><%= job.start_date %> - <%= job.end_date %></p>
                             <p>
                               <strong>Salary:</strong>
                               <%= job.salary %>
@@ -61,7 +61,7 @@
                               <strong>Skill:</strong>
                               <%= job.skill %>
                             </p>
-                            <p class="card-text"><%= job.content %></p>
+                            
                             <ul class="list-inline">
                               <li class="list-inline-item">
                                 <%= link_to job, method: :delete,
